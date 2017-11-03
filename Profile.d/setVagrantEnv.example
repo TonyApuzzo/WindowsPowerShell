@@ -1,0 +1,18 @@
+# Set Vagrant Environment Variables Example
+# Modify for your environment and save-as "setVagrantEnv.ps1"
+
+# Use SMB (CIFS) Folder Share (could try sshfs, but so far only works with Cygwin)
+$env:VAGRANT_SYNCED_FOLDER_TYPE="smb"
+
+# Set up the Vagrant SMB Credentials
+#$env:VAGRANT_SMB_USERNAME="${env:USERNAME}@${env:USERDOMAIN}"
+#$env:VAGRANT_SMB_PASSWORD="Sup3rS3cret"
+
+# Do NOT autostart the Vagrant GUI (since I will use x2go to connect)
+# $env:VAGRANT_DESKTOP_GUI='true'
+
+# Other Personal Configurations
+#$env:VAGRANT_CODE_DIR="D:\Code"
+#$env:VAGRANT_GIT_USER_NAME="${env:USERNAME}"
+#$env:VAGRANT_GIT_USER_EMAIL="${env:USERNAME}@${env:USERDNSDOMAIN}"
+#$env:VAGRANT_PUTTY_SSH_CLIENT=$(get-command kitty | %{$_.Source})
