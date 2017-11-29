@@ -8,8 +8,13 @@ $env:VAGRANT_SYNCED_FOLDER_TYPE="smb"
 #$env:VAGRANT_SMB_USERNAME="${env:USERNAME}@${env:USERDOMAIN}"
 #$env:VAGRANT_SMB_PASSWORD="Sup3rS3cret"
 
-# Do NOT autostart the Vagrant GUI (since I will use x2go to connect)
-# $env:VAGRANT_DESKTOP_GUI='true'
+# Network Bridge to Use (Defaults to "ExternalBridge", which you'd have to manually create)
+# "Default Switch" is the new automaticly created NAT switch that Windows 10 introduced with
+# the "Fall 2017 Creator's Update", AKA as Windows 1709 or RedStone 3.
+#$env:VAGRANT_NETWORK_BRIDGE="Default Switch"
+
+# Leave commented out to NOT autostart the Vagrant GUI (since I will use x2go to connect)
+#$env:VAGRANT_DESKTOP_GUI='true'
 
 # Other Personal Configurations
 #$env:VAGRANT_CODE_DIR="D:\Code"
