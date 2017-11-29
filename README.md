@@ -30,10 +30,8 @@ Things specific to me are isolated into the example file at:
 
 ## Usage
 
-Put any PowerShell scripts or modules you want to have automatically sourced into $Profile\..\Profile.d
-named *.ps1 or *.psm1, respectively.
+Put any PowerShell scripts or modules you want to have automatically sourced into $Profile\..\Profile.d named *.ps1 or *.psm1, respectively.
 
 ## Warning
 
-Remember to never check any files into the repository that contain private or sensitive data like SSH keys,
-SSL certificates or passwords.
+Remember to never check any files into the repository that contain private or sensitive data like SSH keys, SSL certificates or passwords.  Add the sensitive file(s) to the .gitignore and then Use the `file.ext.example` approach to add a sanitized version of the sensitive file to the repository instead of the actual file.
