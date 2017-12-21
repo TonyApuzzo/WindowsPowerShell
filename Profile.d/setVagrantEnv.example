@@ -1,6 +1,9 @@
 # Set Vagrant Environment Variables Example
 # Modify for your environment and save-as "setVagrantEnv.ps1"
 
+# Set Logging: debug (loud), info (normal), warn (quiet), and error (very quiet)
+$env:VAGRANT_LOG="warn"
+
 # Use SMB (CIFS) Folder Share (could try sshfs, but so far only works with Cygwin)
 $env:VAGRANT_SYNCED_FOLDER_TYPE="smb"
 
@@ -21,3 +24,10 @@ $env:VAGRANT_SYNCED_FOLDER_TYPE="smb"
 #$env:VAGRANT_GIT_USER_NAME="${env:USERNAME}"
 #$env:VAGRANT_GIT_USER_EMAIL="${env:USERNAME}@${env:USERDNSDOMAIN}"
 #$env:VAGRANT_PUTTY_SSH_CLIENT=$(get-command kitty | %{$_.Source})
+#$env:VAGRANT_LOCALE=C
+#$env:VAGRANT_TIMEZONE=America/Denver
+
+# Start Remote Desktop Session in the background
+function vrdp() {
+  Start-Process -NoNewWindow vagrant.exe rdp @Args
+}

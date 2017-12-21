@@ -42,7 +42,8 @@ function minikube-start () {
     $ram=(get-mk-default-memory)
     $cpus=(get-mk-default-cpus)
     $k8sVersion="v1.8.0"
-    minikube start --vm-driver=hyperv --hyperv-virtual-switch=ExternalSwitch --alsologtostderr --cpus=$cpus --memory=$ram --kubernetes-version=$k8sVersion
+    $vSwitch="ExternalSwitch"
+    minikube start --vm-driver=hyperv --hyperv-virtual-switch=$vSwitch --alsologtostderr --cpus=$cpus --memory=$ram --kubernetes-version=$k8sVersion
   }
   finally {
     Pop-Location
