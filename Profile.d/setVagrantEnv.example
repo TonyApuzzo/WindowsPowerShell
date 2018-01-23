@@ -1,5 +1,5 @@
 # Set Vagrant Environment Variables Example
-# Modify for your environment and save-as "setVagrantEnv.ps1"
+# Save-as "setVagrantEnv.ps1" and modify for your environment
 
 # Set Logging: debug (loud), info (normal), warn (quiet), and error (very quiet)
 $env:VAGRANT_LOG="warn"
@@ -11,8 +11,8 @@ $env:VAGRANT_SYNCED_FOLDER_TYPE="smb"
 #$env:VAGRANT_SMB_USERNAME="${env:USERNAME}@${env:USERDOMAIN}"
 #$env:VAGRANT_SMB_PASSWORD="Sup3rS3cret"
 
-# Network Bridge to Use (Defaults to "ExternalBridge", which you'd have to manually create)
-# "Default Switch" is the new automaticly created NAT switch that Windows 10 introduced with
+# Network Bridge to Use (Defaults to "ExternalSwitch", which you'd have to manually create)
+# "Default Switch" is the new automatically created NAT switch that Windows 10 introduced with
 # the "Fall 2017 Creator's Update", AKA as Windows 1709 or RedStone 3.
 #$env:VAGRANT_NETWORK_BRIDGE="Default Switch"
 
