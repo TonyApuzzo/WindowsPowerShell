@@ -10,7 +10,7 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Load Custom Modules
-(Get-Item $profileDDir).getFiles("*.psm1").FullName | %{ Import-Module -DisableNameChecking "$_" }
+(Get-Item "${profileDDir}\*.psm1").FullName | %{ Import-Module -DisableNameChecking "$_" }
 
 # Source scripts
-(Get-Item $profileDDir).getFiles("*.ps1").FullName | %{ . "$_" }
+(Get-Item "${profileDDir}\*.ps1").FullName | %{ . "$_" }
