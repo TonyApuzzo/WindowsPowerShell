@@ -1,8 +1,7 @@
 # VMSwitch Utils to make moving between networks easier when using Vagrant and Hyper-V
 
+# Create the External Switch to use with Hyper-V and Vagrant
 function create-vmswitch() {
-
-# Network Bridge to Use (Defaults to "ExternalSwitch")
   if (-not (Test-Path env:VAGRANT_NETWORK_BRIDGE)) { $env:VAGRANT_NETWORK_BRIDGE = 'ExternalSwitch' }
   
   if ($env:VAGRANT_NETWORK_BRIDGE -eq 'Default Switch') {
