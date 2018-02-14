@@ -4,18 +4,24 @@
 # Set Logging: debug (loud), info (normal), warn (quiet), and error (very quiet)
 $env:VAGRANT_LOG="warn"
 
-# Use SMB (CIFS) Folder Share
-$env:VAGRANT_SYNCED_FOLDER_TYPE="smb"
-#$env:VAGRANT_SYNCED_FOLDER_TYPE="rsync"
-#$env:VAGRANT_SYNCED_FOLDER_TYPE="sshfs"
+# SSHFS is now working OOB with HyperV I think.  You might have to install
+# git on your host (or cygwin) to get this to work.
+$env:VAGRANT_SYNCED_FOLDER_TYPE="sshfs"
 
-# Set up the Vagrant SMB Credentials
+# Use SMB (CIFS) Folder Share
+#$env:VAGRANT_SYNCED_FOLDER_TYPE="smb"
 #$env:VAGRANT_SMB_USERNAME="${env:USERNAME}@${env:USERDOMAIN}"
 #$env:VAGRANT_SMB_PASSWORD="Sup3rS3cret"
 
-# Network Bridge to Use (Defaults to "ExternalSwitch", which you'd have to manually create)
-# "Default Switch" is the new automatically created NAT switch that Windows 10 introduced with
-# the "Fall 2017 Creator's Update", AKA as Windows 1709 or RedStone 3.
+# RSYNC should always work but is one way host -> guest
+#$env:VAGRANT_SYNCED_FOLDER_TYPE="rsync"
+
+# Network Bridge to Use (Defaults to "ExternalSwitch", which you have to
+# manually create.) "Default Switch" is the new automatically created NAT
+# switch that Windows 10 introduced with the "Fall 2017 Creator's Update",
+# AKA as Windows 1709 or RedStone 3. Sadly, "Default Switch" has absolutely
+# terrible performance, so stich with ExternalSwitch until Microsoft fixes
+# DefautlSwitch performance with linux guests.
 #$env:VAGRANT_NETWORK_BRIDGE="ExternalSwitch"
 #$env:VAGRANT_NETWORK_BRIDGE="Default Switch"
 
