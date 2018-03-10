@@ -35,9 +35,3 @@ $env:VAGRANT_SYNCED_FOLDER_TYPE="sshfs"
 #$env:VAGRANT_PUTTY_SSH_CLIENT=$(get-command kitty | %{$_.Source})
 #$env:VAGRANT_LOCALE="C"
 #$env:VAGRANT_TIMEZONE="America/Denver"
-
-# Start Remote Desktop Session in the background
-function vrdp() {
-  Start-Process -NoNewWindow vagrant.exe rdp @Args
-}
-
