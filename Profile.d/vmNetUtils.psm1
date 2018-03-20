@@ -1,3 +1,26 @@
+Function Fix-ExternalSwitch {
+    [CmdletBinding()]
+    
+    $switchName = "ExternalSwitch"
+    $vmSwitch = Get-VMSwitch -Name $switchName
+    $vmSwitchGuid = switch ($vmSwitch.NetAdapterInterfaceGuid) {
+      $null { [GUID]::Empty }
+      default { $vmSwitch.NetAdapterInterfaceGuid[0] }
+    }
+
+    # Find a working Network Adapter that is not bound to the ExternalSwitch
+    $nA = Get-NetAdapter -Physical | Where-Object { $_.Status -eq "Up" -and [GUID]($_.InterfaceGuid) -ne $vmSwitchGuid }
+    
+    if ($nA) {
+      Write-Host "Reconfiguring $switchName to use $($nA.Name)"
+      Set-VmSwitch -Name $switchName -NetAdapterName $nA[0].Name -AllowManagementOS $true
+    } else {
+      Write-Host "Virtual switch already connected or no usable adapter found."
+    }
+    
+}
+
+
 # This allows you to force an IP address to a guest VM under Hyper-V
 # http://www.ravichaganti.com/blog/set-or-inject-guest-network-configuration-from-hyper-v-host-windows-server-2012/
 Function Set-VMNetworkConfiguration {
