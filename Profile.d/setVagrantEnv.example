@@ -20,12 +20,13 @@ $env:VAGRANT_SYNCED_FOLDER_TYPE="sshfs"
 # manually create.) "Default Switch" is the new automatically created NAT
 # switch that Windows 10 introduced with the "Fall 2017 Creator's Update",
 # AKA as Windows 1709 or RedStone 3. Sadly, "Default Switch" has absolutely
-# terrible performance, so stich with ExternalSwitch until Microsoft fixes
-# DefautlSwitch performance with linux guests.
+# terrible performance, so stick with ExternalSwitch until Microsoft fixes
+# Default Switch performance with linux guests.
 #$env:VAGRANT_NETWORK_BRIDGE="ExternalSwitch"
 #$env:VAGRANT_NETWORK_BRIDGE="Default Switch"
 
-# Leave commented out to NOT autostart the Vagrant GUI
+# Leave commented out to NOT autostart the Vagrant GUI, This is normally
+# preferred, you should use `vagrant rdp` instead of the console.
 #$env:VAGRANT_DESKTOP_GUI="true"
 
 # Other Personal Configurations
