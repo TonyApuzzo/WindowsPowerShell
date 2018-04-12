@@ -1,5 +1,8 @@
 # Set Vagrant Environment Variables Example
 # Save-as "setVagrantEnv.ps1" and modify for your environment
+#
+# Values set in setVagrantEnv.ps1 override SETTINGS_LOCAL.yml
+#
 
 # Set Logging: debug (loud), info (normal), warn (quiet), and error (very quiet)
 $env:VAGRANT_LOG="warn"
@@ -36,9 +39,3 @@ $env:VAGRANT_SYNCED_FOLDER_TYPE="sshfs"
 #$env:VAGRANT_PUTTY_SSH_CLIENT=$(get-command kitty | %{$_.Source})
 #$env:VAGRANT_LOCALE="C"
 #$env:VAGRANT_TIMEZONE="America/Denver"
-
-# Start Remote Desktop Session in the background
-function vrdp() {
-  Start-Process -NoNewWindow vagrant.exe rdp @Args
-}
-
