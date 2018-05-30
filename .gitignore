@@ -1,6 +1,7 @@
 # Ignore files created by other processes
 Modules/
 Scripts/
+.vscode/
 
 # Do not include files that might have sensitive data
 Profile.d/setVagrantEnv.ps1
