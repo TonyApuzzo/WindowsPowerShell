@@ -26,6 +26,6 @@ function script:updatePath {
   }
 }
 
-set-psdebug -trace 2
+#set-psdebug -trace 2
 &script:updatePath
-set-psdebug -trace 0
+#set-psdebug -trace 0
