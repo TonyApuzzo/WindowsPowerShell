@@ -11,6 +11,6 @@ function vputty() {
 }
 
 # Reload and re-provision with Ansible
-function vputty() {
+function vreansible() {
   vagrant.exe reload --provision --provision-with=ansible_local
 }
