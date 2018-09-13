@@ -1,3 +1,4 @@
+
 # Set Vagrant Environment Variables Example
 # Save-as "setVagrantEnv.ps1" and modify for your environment
 #
@@ -6,6 +7,10 @@
 
 # Set Logging: debug (loud), info (normal), warn (quiet), and error (very quiet)
 $env:VAGRANT_LOG="warn"
+
+# Use Ruby's DNS Resolver
+$env:VAGRANT_ENABLE_RESOLV_REPLACE=1
+$env:VAGRANT_DISABLE_RESOLV_REPLACE=0
 
 # SSHFS is now working OOB with HyperV I think.  You might have to install
 # git on your host (or cygwin) to get this to work.
@@ -19,13 +24,13 @@ $env:VAGRANT_SYNCED_FOLDER_TYPE="sshfs"
 # RSYNC should always work but is one way host -> guest
 #$env:VAGRANT_SYNCED_FOLDER_TYPE="rsync"
 
-# Network Bridge to Use (Defaults to "ExternalSwitch", which you have to
+# Network Bridge to Use (Defaults to "External Switch", which you have to
 # manually create.) "Default Switch" is the new automatically created NAT
 # switch that Windows 10 introduced with the "Fall 2017 Creator's Update",
 # AKA as Windows 1709 or RedStone 3. Sadly, "Default Switch" has absolutely
-# terrible performance, so stick with ExternalSwitch until Microsoft fixes
+# terrible performance, so stick with External Switch until Microsoft fixes
 # Default Switch performance with linux guests.
-#$env:VAGRANT_NETWORK_BRIDGE="ExternalSwitch"
+#$env:VAGRANT_NETWORK_BRIDGE="External Switch"
 #$env:VAGRANT_NETWORK_BRIDGE="Default Switch"
 
 # Leave commented out to NOT autostart the Vagrant GUI, This is normally
