@@ -12,5 +12,5 @@ function vputty() {
 
 # Reload and re-provision with Ansible
 function vreansible() {
-  vagrant.exe reload --provision --provision-with=ansible_local
+  vagrant.exe reload --provision --provision-with=ansible_local @Args 2>&1 | Tee vagrant.log
 }
