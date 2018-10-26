@@ -19,3 +19,31 @@ function Get-GitBlobSizes() {
     git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | awk '/^blob/ {print substr(\$0,6)}' | sort --numeric-sort --key=2 | cut --complement --characters=13-40 | numfmt --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
 '@
 }
+
+function Git-Merge-Current-to-All-Branches {
+    $srcBranch = git rev-parse --abbrev-ref HEAD
+    if (!$?) { Write-Output "Stopped."; return }
+
+    if ($srcBranch -eq "HEAD") {
+        Write-Output "Current Branch is not a named branch, aborting."
+        return
+    }
+    $unmergedBranches = git branch --format="%(refname:short)" --no-merge
+    foreach ($branch in $unmergedBranches) {
+        git checkout $branch
+        if (!$?) { Write-Output "Stopped."; return }
+
+        git pull
+        if (!$?) { Write-Output "Stopped."; return }
+
+        git merge $srcBranch
+        if ($?) {
+            Write-Output "Merged $srcBranch into $branch"
+        } else {
+            Write-Output "Stopped merging due to conflict"
+            return
+        }
+    }
+    Write-Output "Finished."
+    git checkout $srcBranch
+}
