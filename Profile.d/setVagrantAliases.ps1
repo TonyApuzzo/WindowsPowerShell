@@ -12,15 +12,29 @@ function vputty() {
 
 # Bring Up Vagrant machine with log
 function vup() {
-  vagrant.exe up @Args 2>&1 | Tee vagrant.log
+  Measure-Command -Expression { 
+    vagrant.exe up @Args 2>&1 | Tee vagrant.log | Out-Default
+  }
 }
 
 # Reload and re-provision with Ansible
 function vreansible() {
-  vagrant.exe reload --provision --provision-with=ansible_local @Args 2>&1 | Tee vagrant.log
+  Measure-Command -Expression { 
+    vagrant.exe reload --provision --provision-with=ansible_local @Args 2>&1 | Tee vagrant.log | Out-Default
+  }
 }
 
 # Reload / Full Re-provision
 function vprov() {
-  vagrant.exe reload --provision @Args 2>&1 | Tee vagrant.log
+  Measure-Command -Expression { 
+    vagrant.exe reload --provision @Args 2>&1 | Tee vagrant.log | Out-Default
+  }
+}
+
+# Destroy / Rebuild
+function vmulligan() {
+  vagrant destroy
+  if ($?) {
+    vup @Args
+  }
 }

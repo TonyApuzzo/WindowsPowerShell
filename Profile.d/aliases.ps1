@@ -6,11 +6,6 @@
 #ri alias:curl
 #ri alias:rmdir
 
-# Start Remote Desktop Session in the background
-function vrdp() {
-  Start-Process -NoNewWindow vagrant.exe rdp @Args
-}
-
 # Use git bash to get a listing of files by size in git
 
 function Get-GitBlobSizes() {
