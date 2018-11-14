@@ -14,7 +14,7 @@ You will need to set up user-specific secretes and other information by copying 
 1. Fork this repository into your own repo (if you don't want to use my files as-is.)
 2. Clone the git repository into your PowerShell Profile folder, for example:
     ```
-    PS> git clone https://bitbucket.flatironssolutions.com/scm/~tapuzzo/windowspowershell.git "$Profile\.."
+    PS> git clone https://github.com/TonyApuzzo/WindowsPowerShell.git "$Profile\.."
     ```
 3. Copy the example files to specific files, for example:
     ```
