@@ -3,6 +3,8 @@
 This folder contains Tony's PowerShell configuration.  Features:
 * Posh Git command-line completion
 * Kubernetes Minikube helper functions
+* Kubectl and Helm command-line completion
+* Vagrant aliases: `vup`, `vreansible`, `vrdp`, `vputty`, etc.
 * "Solarized" coloration for PowerShell Windows
 * Set environment variables for Flatirons/Jouve Vagrant virtual machine configuration
 * More coming over time...
