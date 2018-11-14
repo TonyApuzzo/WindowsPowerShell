@@ -7,8 +7,7 @@ This folder contains Tony's PowerShell configuration.  Features:
 * Set environment variables for Flatirons/Jouve Vagrant virtual machine configuration
 * More coming over time...
 
-Things specific to me are isolated into the example file at:
-    .\WindowsPowerShell\Profile.d\setVagrantEnv.example
+You will need to set up user-specific secretes and other information by copying examples files, see below.
 
 ## Installation
 
@@ -17,10 +16,10 @@ Things specific to me are isolated into the example file at:
     ```
     PS> git clone https://bitbucket.flatironssolutions.com/scm/~tapuzzo/windowspowershell.git "$Profile\.."
     ```
-3. Copy the example files to specific files
+3. Copy the example files to specific files, for example:
     ```
     PS> cd "$Profile\..\Profile.d"
-    PS> cp setVagrantEnv.example setVagrantEnv.ps1
+    PS> cp setVagrantEnv.ps1.example setVagrantEnv.ps1
     ```
 4. Edit the file(s) for your specific situation:
     ```
