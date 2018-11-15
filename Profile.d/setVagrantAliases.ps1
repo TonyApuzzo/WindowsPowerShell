@@ -12,26 +12,29 @@ function vputty() {
 
 # Bring Up Vagrant machine with log
 function vup() {
-  Measure-Command -Expression { 
+  $ts = Measure-Command -Expression { 
     vagrant.exe up @Args 2>&1 | Tee vagrant.log | Out-Default
   }
+  "Elapsed time {0:mm}:{0:ss}" -f $ts
 }
 
 # Reload and re-provision with Ansible
 function vreansible() {
-  Measure-Command -Expression { 
+  $ts = Measure-Command -Expression { 
     vagrant.exe reload --provision --provision-with=ansible_local @Args 2>&1 | Tee vagrant.log | Out-Default
   }
+  "Elapsed time {0:mm}:{0:ss}" -f $ts
 }
 
 # Reload / Full Re-provision
 function vprov() {
-  Measure-Command -Expression { 
+  $ts = Measure-Command -Expression { 
     vagrant.exe reload --provision @Args 2>&1 | Tee vagrant.log | Out-Default
   }
+  "Elapsed time {0:mm}:{0:ss}" -f $ts
 }
 
-# Destroy / Rebuild
+# Start over: Destroy / Rebuild / Provision
 function vmulligan() {
   vagrant destroy
   if ($?) {
