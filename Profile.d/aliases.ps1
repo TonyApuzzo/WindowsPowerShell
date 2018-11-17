@@ -42,3 +42,13 @@ function Git-Merge-Current-to-All-Branches {
     Write-Output "Finished."
     git checkout $srcBranch
 }
+
+# See https://www.nirsoft.net/utils/control_my_monitor.html
+# Allowed Values: 1, 3, 4, 12, 15, 17, 18
+function Set-DisplayPort() {
+    ControlMyMonitor.exe /SetValue "DELL U3011" 60 15
+}
+
+function Set-HDMI1() {
+    ControlMyMonitor.exe /SetValue "DELL U3011" 60 17
+}
