@@ -24,3 +24,11 @@ if ($err.count -eq 0) {
   }
   
 }
+
+function get-k8s-dashboard-token() {
+    kubectl -n kube-system describe secret `
+        $(kubectl -n kube-system get secret `
+        | Select-String '^(admin-user-\w+)' `
+        | ForEach-Object { $_.matches.groups[1] } `
+        | Select-Object -First 1 -ExpandProperty Value)
+}
