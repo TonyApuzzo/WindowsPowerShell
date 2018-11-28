@@ -27,13 +27,18 @@ function vreansible() {
 # Reload / Full Re-provision
 function vprov() {
   Measure-Command -Expression { 
-    vagrant.exe reload --provision @Args 2>&1 | Tee vagrant.log | Out-Default
+    vagrant.exe --debug reload --provision @Args 2>&1 | Tee vagrant.log | Out-Default
   }
 }
 
 # Destroy / Rebuild
 function vmulligan() {
-  vagrant destroy
+  if ($args[0] -eq "-f" -or $args[0] -eq "--force") {
+	$force, $Args = $Args
+    vagrant destroy $force
+  } else {
+    vagrant destroy
+  }
   if ($?) {
     vup @Args
   }
