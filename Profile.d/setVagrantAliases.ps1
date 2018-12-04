@@ -36,7 +36,12 @@ function vprov() {
 
 # Start over: Destroy / Rebuild / Provision
 function vmulligan() {
-  vagrant destroy
+  if ($args[0] -eq "-f" -or $args[0] -eq "--force") {
+	$force, $Args = $Args
+    vagrant destroy $force
+  } else {
+    vagrant destroy
+  }
   if ($?) {
     vup @Args
   }
