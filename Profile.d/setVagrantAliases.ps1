@@ -34,10 +34,10 @@ function vprov() {
   "Elapsed time {0:mm}:{0:ss}" -f $ts
 }
 
-# Start over: Destroy / Rebuild / Provision
+# Start over: Destroy -> Recreate -> Provision
 function vmulligan() {
   if ($args[0] -eq "-f" -or $args[0] -eq "--force") {
-	$force, $Args = $Args
+    $force, $Args = $Args
     vagrant destroy $force
   } else {
     vagrant destroy
