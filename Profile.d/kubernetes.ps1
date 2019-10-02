@@ -7,10 +7,14 @@ if ($err.count -eq 0) {
     param ( [String]$Name )
     $command = Get-Command -Name $Name -ErrorAction SilentlyContinue
     if ($command) {
-      $commandCompletions = Get-Item -Path "$env:TEMP\${command}_completions.sh" -ErrorAction SilentlyContinue
-      if ($null -eq $commandCompletions) {
-        ((& $command completion bash) -join "`n") | Set-Content -Encoding ASCII -NoNewline -Path "${env:TEMP}\${command}_completions.sh"
-        $commandCompletions = Get-Item -Path "${env:TEMP}\${command}_completions.sh" -ErrorAction Stop
+      $commandCompletions = $null
+      while ($null -eq $commandCompletions) {
+        $commandCompletions = Get-Item -Path "$env:TEMP\${command}_completions.sh" -ErrorAction SilentlyContinue
+        if ($null -eq $commandCompletions) {
+          echo "Regenerating $command completions"
+          ((& $command completion bash) -join "`n") | Set-Content -Encoding ASCII -NoNewline -Path "${env:TEMP}\${command}_completions.sh" -ErrorAction SilentlyContinue
+          $commandCompletions = Get-Item -Path "${env:TEMP}\${command}_completions.sh" -ErrorAction Stop
+        }
       }
       $commandCompletions.FullName
     }
